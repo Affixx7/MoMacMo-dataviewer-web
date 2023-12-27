@@ -27,6 +27,24 @@
       "service": "Cognito"
     }
   },
+  "parameters": {
+    "AMPLIFY_storage_momacmodataviewerweb74e51bf8_bucketName": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "momacmodataviewerweb74e51bf8"
+        }
+      ]
+    },
+    "AMPLIFY_storage_momacmodataviewerweb74e51bf8_region": {
+      "usedBy": [
+        {
+          "category": "storage",
+          "resourceName": "momacmodataviewerweb74e51bf8"
+        }
+      ]
+    }
+  },
   "storage": {
     "momacmodataviewerweb74e51bf8": {
       "dependsOn": [],
