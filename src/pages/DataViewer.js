@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Button } from '@mui/material';
 import { fetchImage } from '../api/ApiFunctions'; 
+import { Box } from '@mui/system';
 
 const DataViewer = () => {
   const [inputValues, setInputValues] = useState({
@@ -28,6 +29,7 @@ const DataViewer = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
+      <Box sx={{m:2}}></Box>
         <TextField
           label="Index"
           name="index"
@@ -35,6 +37,7 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <TextField
           label="Bucket"
           name="bucket"
@@ -42,6 +45,7 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <TextField
           label="Project"
           name="project"
@@ -49,6 +53,7 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <TextField
           label="Folder"
           name="folder"
@@ -56,6 +61,7 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <TextField
           label="Dataset"
           name="dataset"
@@ -63,6 +69,7 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <TextField
           label="Volume"
           name="volume"
@@ -70,11 +77,13 @@ const DataViewer = () => {
           onChange={handleChange}
           fullWidth
         />
+        <Box sx={{m:2}}></Box>
         <Button variant="contained" onClick={handleFetch}>Fetch Image</Button>
       </Grid>
     
 
       <Grid item xs={12} md={6}>
+      <Box sx={{m:2}}></Box>
         {isLoading ? (
           <div>Loading...</div>
         ) : (

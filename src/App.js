@@ -3,6 +3,8 @@ import "@aws-amplify/ui-react/styles.css";
 import { withAuthenticator, Button, Heading, Image, View, Card } from "@aws-amplify/ui-react";
 import S3FileList from "./S3FileList";
 import DataViewer from "./pages/DataViewer";
+import { Box } from '@mui/system';
+
 
 
 function App({ signOut }) {
@@ -14,7 +16,8 @@ function App({ signOut }) {
         {/* <S3FileList></S3FileList> */}
         <DataViewer></DataViewer>
       </Card>
-      <Button onClick={signOut}>Sign Out</Button>
+      <Box sx={{ml:2}}><Button onClick={signOut}>Sign Out</Button></Box>
+      
     </View>
   );
 }
