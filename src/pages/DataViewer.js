@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Grid, TextField, Button } from '@mui/material';
 import { fetchImage } from '../api/ApiFunctions'; 
 import { Box } from '@mui/system';
+import DataHover from '../components/DataHover';
+import sample_image from '../components/sample_image.png';
 
 const DataViewer = () => {
   const [inputValues, setInputValues] = useState({
@@ -21,7 +23,8 @@ const DataViewer = () => {
 
   const handleFetch = async () => {
     setIsLoading(true);
-    const imageData = await fetchImage(inputValues);
+    // const imageData = await fetchImage(inputValues);
+    const imageData = sample_image;
     setImageSrc(`data:image/png;base64,${imageData}`); // Convert binary data to a Base64 URL
     setIsLoading(false);
   };
@@ -87,7 +90,8 @@ const DataViewer = () => {
         {isLoading ? (
           <div>Loading...</div>
         ) : (
-          <img src={imageSrc} alt="Fetched" style={{ maxWidth: '100%', maxHeight: '500px' }} />
+            <DataHover src={sample_image} alt="Fetched" />
+        //   <img src={imageSrc} alt="Fetched" style={{ maxWidth: '100%', maxHeight: '500px' }} />
         )}
       </Grid>
     </Grid>
