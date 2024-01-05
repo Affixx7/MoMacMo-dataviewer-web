@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DataHover = ({ src, alt }) => {
   const [markers, setMarkers] = useState([]);
   const [rows, setRows] = useState([]);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+  const [counter, setCounter] = useState(0);
 
   const handleMouseMove = (event) => {
     const bounds = event.target.getBoundingClientRect();
@@ -14,12 +17,20 @@ const DataHover = ({ src, alt }) => {
     setCoordinates({ x, y });
   };
 
-  const handleAddMarker = () => {
-    const newId = new Date().getTime(); // Unique ID based on timestamp
-    const newMarker = { id: newId, name: `Marker ${newId}`, top: coordinates.y, left: coordinates.x };
-    setMarkers([...markers, newMarker]);
-    setRows([...rows, newMarker]);
-  };
+    const handleAddMarker = () => {
+        const newId = counter; // Use the current counter value
+        setCounter(counter + 1); // Increment the counter
+
+        const newMarker = {
+        id: newId,
+        name: `Marker ${newId}`,
+        top: coordinates.y,
+        left: coordinates.x
+        };
+
+        setMarkers(prevMarkers => [...prevMarkers, newMarker]);
+        setRows(prevRows => [...prevRows, newMarker]);
+    };
 
   const handleDelete = (id) => {
     setMarkers(markers.filter(marker => marker.id !== id));
@@ -27,22 +38,22 @@ const DataHover = ({ src, alt }) => {
   };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'name', headerName: 'Name', width: 130, editable: true },
-    { field: 'top', headerName: 'Top', width: 90 },
-    { field: 'left', headerName: 'Left', width: 90 },
+    { field: 'id', headerName: 'ID', flex: 1 },
+    { field: 'name', headerName: 'Name', flex: 1, editable: true },
+    { field: 'top', headerName: 'Top', flex: 1 },
+    { field: 'left', headerName: 'Left', flex: 1 },
     {
       field: 'actions',
       headerName: 'Actions',
       sortable: false,
       renderCell: (params) => (
-        <Button 
-          variant="contained" 
-          color="primary" 
+        <IconButton 
           onClick={() => handleDelete(params.id)}
+        //   color="primary"
+          aria-label="delete"
         >
-          Delete
-        </Button>
+          <DeleteIcon />
+        </IconButton>
       ),
     },
   ];
